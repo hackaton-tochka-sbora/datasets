@@ -603,6 +603,64 @@
       ],
       "access": "На официальной странице отдельно опубликованы JSON и изображения; полный объём загрузки требует проверки.",
       "status": "Большой слабый мультимодальный источник; полные архивы не скачивались."
+    },
+    {
+      "id": "cu-ws",
+      "name": "CU-WS",
+      "language": [
+        "ru"
+      ],
+      "domain": "Русскоязычный каталог товаров и поисковые взаимодействия",
+      "urls": {
+        "archive": "cu_ws.zip",
+        "repository": "https://github.com/hackaton-tochka-sbora/datasets"
+      },
+      "size": "Локально проверены: 30 991 350 строк query_clicks, 1 177 200 описаний, 546 069 товарных предложений и 6 963 категории.",
+      "fields": [
+        "query_clicks.sku_id",
+        "query_clicks.sku_name",
+        "query_clicks.sku_brand_name",
+        "query_clicks.sku_price",
+        "query_clicks.sku_subject_id",
+        "query_clicks.sku_seo_id",
+        "query_clicks.query_text",
+        "query_clicks.sku_position",
+        "sku_desc.sku_id",
+        "sku_desc.title",
+        "sku_desc.description",
+        "skus.yml_catalog.@date",
+        "skus.shop.categories.category",
+        "skus.shop.offers.offer",
+        "offers.@id",
+        "offers.@available",
+        "offers.vendor",
+        "offers.model",
+        "offers.name",
+        "offers.categories.categoryId",
+        "offers.param.@name",
+        "offers.param.@unit",
+        "offers.param.#text"
+      ],
+      "labels": "Готовой ручной разметки extraction нет. query_clicks содержит поисковые события, а skus.pkl — каталоговые поля и seller attributes.",
+      "evidence": "В sku_desc.description встречаются фрагменты вроде «Характеристики:» и списки key-value, но готовых evidence/span нет. Параметры из skus.pkl можно использовать как слабый источник для последующей проверки текста.",
+      "advantages": [
+        "Русскоязычные реальные товарные данные и большой объём текста.",
+        "1 177 200 записей с title и description.",
+        "546 069 предложений, 6 963 категории и вложенные параметры name/value.",
+        "Можно связывать каталог, описание и поисковый query по sku_id.",
+        "В примерах встречаются технические товары и характеристики: скорость вращения, ширина, тип коннектора и другие параметры."
+      ],
+      "limitations": [
+        "Источник, лицензия и правила использования архива в нём не описаны; их нужно уточнить.",
+        "Нет gold-разметки attribute-value, evidence и span.",
+        "query_clicks — поведенческие данные, а не разметка извлечения.",
+        "skus.pkl — Python pickle; загружать его следует только безопасным ограниченным загрузчиком.",
+        "Набор широкий и не ограничен электроникой.",
+        "В query_clicks встречаются пустые названия и бренды; полноценную статистику заполненности нужно считать отдельно."
+      ],
+      "access": "Оригинальный архив cu_ws.zip добавлен в этот репозиторий через Git LFS; распакованные файлы анализировались локально.",
+      "status": "Локальная проверка схемы и выборочных строк выполнена; полный профиль распределений ещё не рассчитывался.",
+      "provenance": "Происхождение набора по одному имени cu_ws не подтверждено; sample содержит русские marketplace-поля и записи продавца."
     }
   ]
 }
