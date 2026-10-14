@@ -350,6 +350,49 @@
       "status": "Открытый небольшой набор; статистика по качеству не подтверждена полным аудитом."
     },
     {
+      "id": "home-depot-product-search-relevance",
+      "name": "Home Depot Product Search Relevance",
+      "language": [
+        "en"
+      ],
+      "domain": "Home Depot, товары для дома, ремонта и строительства",
+      "urls": {
+        "kaggle": "https://www.kaggle.com/competitions/home-depot-product-search-relevance/data"
+      },
+      "size": "Локальная копия: 74 067 строк train, 54 667 уникальных товаров, 2 044 803 строк attributes и 124 428 описаний товаров.",
+      "fields": [
+        "train.id",
+        "train.product_uid",
+        "train.product_title",
+        "train.search_term",
+        "train.relevance",
+        "product_descriptions.product_uid",
+        "product_descriptions.product_description",
+        "attributes.product_uid",
+        "attributes.name",
+        "attributes.value"
+      ],
+      "labels": "В train.csv есть человеческие оценки релевантности пары search_term–product. attributes.csv содержит структурированные характеристики, но не разметку качества extraction.",
+      "evidence": "Готовых evidence и span нет. В локальной копии около половины непустых attribute-value буквально встречаются в product_description; это самостоятельная эвристическая проверка, а не авторская разметка.",
+      "advantages": [
+        "Есть title, подробное описание и отдельные пары attribute–value.",
+        "Большой объём и 5 411 разных названий характеристик.",
+        "Описания содержат технические параметры, бренды, материалы, цвета, размеры и bullet-пункты.",
+        "Файлы связываются через product_uid.",
+        "Подходит для weak labeling, проверки поиска значений и нормализации."
+      ],
+      "limitations": [
+        "Нет готовых границ span и подтверждающих фрагментов.",
+        "Relevance — это оценка поискового соответствия, а не разметка извлечения.",
+        "Нет явного negative-класса для отсутствующих характеристик.",
+        "Домен в основном связан с ремонтом, домом и строительством.",
+        "Простое substring-сопоставление может давать ложные совпадения.",
+        "Доступ к данным регулируется правилами Kaggle."
+      ],
+      "access": "Локальная копия проверена: train.csv, attributes.csv и product_descriptions.csv распакованы в проекте.",
+      "status": "Проверенный локальный источник; не является полноценным gold benchmark для extraction."
+    },
+    {
       "id": "synthave",
       "name": "SynthAVE",
       "language": [
